@@ -1,0 +1,62 @@
+
+Model: Multi-Layer Perceptron (MLP)
+
+A Multi-Layer Perceptron (MLP) is a type of artificial neural network that consists of multiple layers of neurons, including an input layer, one or more hidden layers, and an output layer. Each neuron in a layer is connected to every neuron in the next layer, making it a fully connected network. MLPs are capable of learning complex patterns in data due to their layered structure and non-linear activation functions.
+
+Key Characteristics of MLP:
+- Input Layer: Receives the input features. In this case, each number is converted into its 12-bit binary representation, resulting in 12 input features.
+- Hidden Layers: Consists of neurons with activation functions commonly ReLU. These layers learn to capture intricate patterns in the data.
+- Output Layer: Provides the final prediction. For this problem, the output layer uses a softmax activation function to classify the input into one of the four categories: None, Fizz, Buzz, FizzBuzz.
+
+Data Pipeline
+
+The data pipeline involves several key steps:
+
+1. Data Generation:
+   - Training and testing datasets are generated with numbers ranging from 101 to 4000 for training and 1 to 100 for testing.
+   - Labels are assigned based on the FizzBuzz rules.
+
+2. Data Preprocessing:
+   - Convert each number into its 12-bit binary representation. This transformation allows the MLP model to work with a fixed-size input vector.
+   - Map labels ('None', 'Fizz', 'Buzz', 'FizzBuzz') to numeric values (0, 1, 2, 3).
+
+3. Model Training:
+   - The MLP model is trained using the processed training data.
+   - Cross-validation with 10 folds is employed to ensure the model's robustness and to mitigate overfitting.
+
+4. Model Evaluation:
+   - The trained model is evaluated on the test data.
+   - Accuracy scores and classification reports are generated to assess the model's performance.
+
+Selection of MLP
+
+After experimenting with several models (MLP, Random Forest, SVM), the MLP was selected based on its superior performance and theoretical advantages for this problem. The comparison is as follows:
+
+- MLP:
+  - Cross-Validation Accuracy: 0.0.9767
+  - Test Accuracy: 0.9900
+  - The MLP achieved the highest accuracy, indicating its capability to capture the underlying patterns in the data effectively.
+
+- Random Forest:
+  - Cross-Validation Accuracy: 0.5195
+  - Test Accuracy: 0.5300
+  - The Random Forest model performed poorly, likely due to its inability to handle the binary encoded input data as effectively as MLP.
+
+- SVM:
+  - Cross-Validation Accuracy: 0.5333
+  - Test Accuracy: 0.5300
+  - SVM also underperformed compared to MLP, possibly due to similar reasons as Random Forest.
+
+Justification for Not Selecting Other Algorithms
+
+- Random Forest:
+  - Random Forests are ensemble methods that work well with tabular data but may not be as effective with binary encoded inputs.
+  - The significant drop in accuracy indicates that the model struggles with the given feature representation.
+
+- SVM:
+  - SVMs are powerful for classification tasks but may require careful tuning of hyperparameters and kernel functions to handle binary data effectively.
+  - The results show that SVM did not perform as well as MLP in this scenario.
+
+Conclusion
+
+The Multi-Layer Perceptron (MLP) was selected as the final model due to its superior performance in both cross-validation and test accuracy. Its ability to learn complex patterns through multiple layers makes it well-suited for the FizzBuzz classification task, where binary encoding is used as the input feature representation. The other models (Random Forest and SVM) did not perform as well, highlighting the effectiveness of MLP for this problem.
